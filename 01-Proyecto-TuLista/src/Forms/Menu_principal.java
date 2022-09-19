@@ -15,6 +15,8 @@ import java.awt.Color;
 import javax.swing.border.LineBorder;
 
 import Logica.Persona;
+import Logica.Vehiculo;
+
 import java.awt.Toolkit;
 import javax.swing.JLabel;
 import java.awt.FlowLayout;
@@ -111,7 +113,7 @@ public class Menu_principal {
 		panel_1.setBounds(0, 99, 608, 75);
 		panel_logo_tipo.add(panel_1);
 		
-		JLabel lbl_titulo_secundario = new JLabel("Gestióna tus clientes de barcos y aviones de una manera pratica y eficaz.");
+		JLabel lbl_titulo_secundario = new JLabel("Gestiona tus clientes de barcos y aviones de una manera prática y eficaz.");
 		lbl_titulo_secundario.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		panel_1.add(lbl_titulo_secundario);
 		img.setBounds(234, 241, 152, 63);
@@ -180,4 +182,6 @@ public class Menu_principal {
 		panel_btn_personal.add(btn_personal_forms);
 		
 	}
+	
+	
 }

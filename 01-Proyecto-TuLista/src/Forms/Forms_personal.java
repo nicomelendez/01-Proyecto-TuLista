@@ -29,6 +29,7 @@ import javax.swing.border.LineBorder;
 
 import Logica.Avion;
 import Logica.Barco;
+import Logica.Factory;
 import Logica.Persona;
 import Logica.Vehiculo;
 import Logica.TMPersona;
@@ -68,6 +69,7 @@ public class Forms_personal extends JPanel {
 	private JTextField textField_buscador;
 	private JTable table_personas_buscador;
 	private JTable table_VehiculosAgregados;
+	private Factory oFactory = new Factory();
 	/**
 	 * Create the panel.
 	 */
@@ -487,7 +489,7 @@ public class Forms_personal extends JPanel {
 						double longitud = (double)Integer.parseInt(textField_longitud.getText());
 						int cantDePasajeros = Integer.parseInt(textField_cantidad_pasajeros.getText());
 						Avion oAvionNuevo = new Avion (id , nombre, color, longitud, cantDePasajeros);
-						listaDeVehiculos.add(oAvionNuevo);
+						oFactory.agregarVehiculoLista(oAvionNuevo);
 						
 						textField_nombre_vehiculo.setText(null);
 						textField_color_vehiculo.setText(null);
@@ -505,7 +507,7 @@ public class Forms_personal extends JPanel {
 						double eslora = (double)Integer.parseInt(textField_eslora.getText());
 						double manga = (double)Integer.parseInt(textField_manga.getText());
 						Barco oBarcoNuevo = new Barco (id, nombre, color, eslora, manga);
-						listaDeVehiculos.add(oBarcoNuevo);
+						oFactory.agregarVehiculoLista(oBarcoNuevo);
 						
 						textField_color_vehiculo.setText(null);
 						textField_nombre_vehiculo.setText(null);
@@ -522,7 +524,7 @@ public class Forms_personal extends JPanel {
 					
 				}
 				
-				TMVehiculos oModel = new TMVehiculos(listaDeVehiculos);
+				TMVehiculos oModel = new TMVehiculos(oFactory.getListaDeVehiculos());
 				table_VehiculosAgregados.setModel(oModel);
 				
 			}
@@ -535,11 +537,9 @@ public class Forms_personal extends JPanel {
 		btn_guardar_persona.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Persona oPersona = new Persona ();
-				ArrayList <Vehiculo> listaDeVehiculosNuevos = new ArrayList <Vehiculo>();
 				try {
-					listaDeVehiculosNuevos = listaDeVehiculos;
-					int id = listaDePersonas.size()+1;
+					
+					int id = oFactory.nuevoId();
 					String nombre = textField_nombre.getText();
 					String apellido = textField_apellido.getText();
 					String departamento = (String)comboBox_departamentos.getSelectedItem();
@@ -549,19 +549,12 @@ public class Forms_personal extends JPanel {
 					int anio = Integer.parseInt(txtAo.getText());
 					LocalDate fechaNacimiento = LocalDate.of(anio,mes,dia);	
 					
-					oPersona.setIdPersona(id);
-					oPersona.setNombre(nombre);
-					oPersona.setApellido(apellido);
-					oPersona.setDptoResidencia(departamento);
-					oPersona.setCantHijos(nroDeHijos);
-					oPersona.setFechaNacimiento(fechaNacimiento);		
+					oFactory.agregarPersona(id,nombre,apellido,departamento,nroDeHijos,fechaNacimiento,oFactory.getListaDeVehiculos());
 					
-					oPersona.agregarListaVehiculo(listaDeVehiculosNuevos);
-					listaDePersonas.add(oPersona);
-					TMPersona oModelo = new TMPersona(listaDePersonas);
+					TMPersona oModelo = new TMPersona(oFactory.getListaDePersonas());
 					table_persona.setModel(oModelo);
 					limpiar();
-					lbl_persona_guardada.setText("Se ha guardado correctamente a "+oPersona.getNombre()+", con el ID: "+oPersona.getIdPersona());
+					lbl_persona_guardada.setText("Se ha guardado correctamente a "+nombre+", con el ID: "+id);
 				}catch(Exception error) {
 					JOptionPane.showMessageDialog(null, "Error, datos invalidos, vuelva a ingresarlos");
 					limpiar();
@@ -579,7 +572,7 @@ public class Forms_personal extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				limpiar();
-				ArrayList <Vehiculo> listaDeVehiculos = new ArrayList<Vehiculo>();
+				oFactory.borrarLista();
 				TMVehiculos oModel = new TMVehiculos(listaDeVehiculos);
 				table_VehiculosAgregados.setModel(oModel);
 			}
@@ -620,7 +613,7 @@ public class Forms_personal extends JPanel {
 				Persona oPersona = new Persona();
 				try {					
 					int buscarPorID = Integer.parseInt(textField_buscador.getText());
-					oPersona = listaDePersonas.get(buscarPorID-1);
+					oPersona = oFactory.buscarPersona(buscarPorID - 1);
 					
 					if( oPersona!=null ) {
 						
@@ -636,7 +629,7 @@ public class Forms_personal extends JPanel {
 						JOptionPane.showMessageDialog(null, "Error, no existe ese id");
 					}
 				}catch(Exception error) {
-					JOptionPane.showMessageDialog(null, "Error, debe ingresar un id");
+					JOptionPane.showMessageDialog(null, "Error, debe ingresar un id válido");
 				}
 				
 			}
@@ -652,6 +645,12 @@ public class Forms_personal extends JPanel {
 		table_personas_buscador = new JTable();
 		scrollPane_Buscador.setViewportView(table_personas_buscador);
 	}
+	
+	public ArrayList<Vehiculo> clonarLista(ArrayList<Vehiculo> lista){
+		ArrayList<Vehiculo> listaNueva = lista;
+		
+		return listaNueva;
+}
 	
 	public void limpiar() {
 		textField_nombre.setText(null);
