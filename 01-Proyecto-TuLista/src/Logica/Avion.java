@@ -2,11 +2,6 @@ package Logica;
 
 public class Avion extends Vehiculo{
 	
-	@Override
-	public String toString() {
-		return "Avión, longitud: " + longitud + ", cantPasajeros: " + cantPasajeros;
-	}
-
 	private double longitud;
 	private int cantPasajeros;
 	
@@ -18,5 +13,10 @@ public class Avion extends Vehiculo{
 		
 	}
 	
+	@Override
+	public String toString() {
+		return "Avión";
+	}
+
 	
 }

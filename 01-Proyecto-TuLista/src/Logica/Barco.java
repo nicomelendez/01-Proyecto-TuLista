@@ -7,7 +7,7 @@ public class Barco extends Vehiculo{
 	
 	@Override
 	public String toString() {
-		return "Barco, eslora:" + eslora + ", manga:" + manga;
+		return "Barco";
 	}
 
 	public Barco(int idVehiculo, String nombre, String color, double eslora, double manga) {

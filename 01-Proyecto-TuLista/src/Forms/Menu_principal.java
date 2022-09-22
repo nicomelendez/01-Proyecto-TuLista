@@ -104,7 +104,7 @@ public class Menu_principal {
 		panel_logo_tipo.add(panel);
 		panel.setLayout(null);
 		
-		JLabel lbl_titulo_principal = new JLabel("¡Bienvendio a TuLista!");
+		JLabel lbl_titulo_principal = new JLabel("¡Bienvenido a TuLista!");
 		lbl_titulo_principal.setBounds(157, 5, 311, 32);
 		lbl_titulo_principal.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 26));
 		panel.add(lbl_titulo_principal);
@@ -113,7 +113,7 @@ public class Menu_principal {
 		panel_1.setBounds(0, 99, 608, 75);
 		panel_logo_tipo.add(panel_1);
 		
-		JLabel lbl_titulo_secundario = new JLabel("Gestiona tus clientes de barcos y aviones de una manera prática y eficaz.");
+		JLabel lbl_titulo_secundario = new JLabel("Gestiona tus clientes de barcos y aviones de una manera práctica y eficaz.");
 		lbl_titulo_secundario.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		panel_1.add(lbl_titulo_secundario);
 		img.setBounds(234, 241, 152, 63);

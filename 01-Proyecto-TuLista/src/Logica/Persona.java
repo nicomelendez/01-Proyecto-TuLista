@@ -43,7 +43,11 @@ public class Persona {
 		this.cantHijos = cantHijos;
 		this.fechaNacimiento = fechaNacimiento;
 	}
-
+	
+	public void agregarVehiculo(Vehiculo oVehiculo) {
+		listaDeVehiculos.add(oVehiculo);
+	}
+	
 	public void agregarListaVehiculo(ArrayList<Vehiculo> listaDeVehiculos) {
 		this.listaDeVehiculos = listaDeVehiculos;
 	}

@@ -32,7 +32,6 @@ public class TMPersona implements TableModel{
 	public String getColumnName(int columnIndex) {
 		// TODO Auto-generated method stub
 		String titulo = null;
-		System.out.println(columnIndex);
 		switch(columnIndex) {
 			case 0:			
 				titulo = "ID";

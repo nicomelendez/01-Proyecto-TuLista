@@ -38,6 +38,7 @@ import Logica.TMVehiculos;
 import javax.swing.JTable;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.SwingConstants;
 
 public class Forms_personal extends JPanel {
 
@@ -57,8 +58,6 @@ public class Forms_personal extends JPanel {
 	private JTextField textField_manga;
 	private JTextField textField_longitud;
 	private JTextField textField_cantidad_pasajeros;
-	private ArrayList <Vehiculo> listaDeVehiculos = new ArrayList <Vehiculo>();
-	private ArrayList <Persona> listaDePersonas = new ArrayList <Persona>();
 	ButtonGroup grupoBtnRadius = new ButtonGroup();
 	JComboBox comboBox_departamentos = new JComboBox();
 	JPanel panel_tipo_barco = new JPanel();
@@ -108,9 +107,20 @@ public class Forms_personal extends JPanel {
 		panel_titulo.setLayout(null);
 		
 		JLabel lbl_titulo = new JLabel("Gestión de personas");
-		lbl_titulo.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lbl_titulo.setBounds(10, 0, 677, 56);
+		lbl_titulo.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				oFactory.calcularVehiculosPorDepartamentos();
+			}
+		});
+		lbl_titulo.setHorizontalAlignment(SwingConstants.CENTER);
+		lbl_titulo.setFont(new Font("HP Simplified", Font.BOLD | Font.ITALIC, 28));
+		lbl_titulo.setBounds(0, 0, 1105, 56);
 		panel_titulo.add(lbl_titulo);
+		
+		JButton btnNewButton = new JButton("New button");
+		btnNewButton.setBounds(64, 24, 85, 21);
+		panel_titulo.add(btnNewButton);
 		
 		JPanel panel_datos = new JPanel();
 		panel_datos.setBounds(10, 62, 247, 338);
@@ -130,9 +140,12 @@ public class Forms_personal extends JPanel {
 		panel_datos_encabezado.setBackground(new Color(255, 255, 255));
 		panel_datos_encabezado.setBounds(0, 0, 247, 37);
 		panel_datos.add(panel_datos_encabezado);
+		panel_datos_encabezado.setLayout(null);
 		
 		JLabel lbl_titulo_de_datos = new JLabel("Ingrese los datos");
-		lbl_titulo_de_datos.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lbl_titulo_de_datos.setHorizontalAlignment(SwingConstants.CENTER);
+		lbl_titulo_de_datos.setBounds(0, 0, 247, 37);
+		lbl_titulo_de_datos.setFont(new Font("HP Simplified", Font.BOLD | Font.ITALIC, 16));
 		panel_datos_encabezado.add(lbl_titulo_de_datos);
 		
 		JPanel panel_datos_nombre = new JPanel();
@@ -262,9 +275,12 @@ public class Forms_personal extends JPanel {
 		panel_vehiculo_encabezado.setBackground(new Color(255, 255, 255));
 		panel_vehiculo_encabezado.setBounds(0, 0, 410, 25);
 		panel_tienes_vehiculos.add(panel_vehiculo_encabezado);
+		panel_vehiculo_encabezado.setLayout(null);
 		
-		JLabel lbl_vehiculo_titulo = new JLabel("¿Tiene vehiculos?");
-		lbl_vehiculo_titulo.setFont(new Font("Tahoma", Font.BOLD, 14));
+		JLabel lbl_vehiculo_titulo = new JLabel("¿Tiene vehículos?");
+		lbl_vehiculo_titulo.setHorizontalAlignment(SwingConstants.CENTER);
+		lbl_vehiculo_titulo.setBounds(0, 0, 410, 23);
+		lbl_vehiculo_titulo.setFont(new Font("HP Simplified", Font.BOLD | Font.ITALIC, 14));
 		panel_vehiculo_encabezado.add(lbl_vehiculo_titulo);
 		
 		JPanel panel_vehiculo_nombre = new JPanel();
@@ -302,9 +318,9 @@ public class Forms_personal extends JPanel {
 		panel_vehiculo_tipo_radius.setBounds(10, 132, 121, 41);
 		panel_tienes_vehiculos.add(panel_vehiculo_tipo_radius);
 		
-		JLabel lbl_tipo_ve = new JLabel("Tipo de vehiculo");
+		JLabel lbl_tipo_ve = new JLabel("Tipo de vehículo");
 		lbl_tipo_ve.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lbl_tipo_ve.setBounds(0, 0, 105, 13);
+		lbl_tipo_ve.setBounds(0, 0, 105, 21);
 		panel_vehiculo_tipo_radius.add(lbl_tipo_ve);
 		
 		
@@ -428,7 +444,7 @@ public class Forms_personal extends JPanel {
 		panel_lista_vehiculo.setBounds(0, 0, 119, 23);
 		panel_lista_vehiculos.add(panel_lista_vehiculo);
 		
-		JLabel lblNewLabel_12 = new JLabel("Lista de vehiculos");
+		JLabel lblNewLabel_12 = new JLabel("Lista de vehículos");
 		lblNewLabel_12.setFont(new Font("Tahoma", Font.BOLD, 10));
 		panel_lista_vehiculo.add(lblNewLabel_12);
 		
@@ -455,8 +471,9 @@ public class Forms_personal extends JPanel {
 		panel_guardar_encabezado.setLayout(null);
 		
 		JLabel lblNewLabel_13 = new JLabel("¿Desea guardar la persona?");
-		lblNewLabel_13.setBounds(112, 6, 288, 15);
-		lblNewLabel_13.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel_13.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_13.setBounds(0, 0, 400, 25);
+		lblNewLabel_13.setFont(new Font("HP Simplified", Font.BOLD | Font.ITALIC, 12));
 		panel_guardar_encabezado.add(lblNewLabel_13);
 		
 		JPanel panel_guardar_content = new JPanel();
@@ -468,13 +485,13 @@ public class Forms_personal extends JPanel {
 		panel_guardar_content.add(lbl_persona_guardada);
 		
 		JPanel panel_btns_helpers = new JPanel();
-		panel_btns_helpers.setBounds(10, 111, 89, 25);
+		panel_btns_helpers.setBounds(10, 111, 266, 25);
 		panel_guardar_persona.add(panel_btns_helpers);
 		panel_btns_helpers.setLayout(null);
 		
 		
 		
-		JButton btn_agregar_vehiculo = new JButton("Añadir vehiculo");
+		JButton btn_agregar_vehiculo = new JButton("Añadir vehículo");
 		btn_agregar_vehiculo.addMouseListener(new MouseAdapter() {
 			
 			@Override
@@ -485,11 +502,10 @@ public class Forms_personal extends JPanel {
 			
 				if (rdbtnNewRadioButton_avion.isSelected() == true) {
 					try {
-						int id = listaDeVehiculos.size()+1;
+						int id = oFactory.getListaDeVehiculos().size()+1;
 						double longitud = (double)Integer.parseInt(textField_longitud.getText());
-						int cantDePasajeros = Integer.parseInt(textField_cantidad_pasajeros.getText());
-						Avion oAvionNuevo = new Avion (id , nombre, color, longitud, cantDePasajeros);
-						oFactory.agregarVehiculoLista(oAvionNuevo);
+						int cantDePasajeros = Integer.parseInt(textField_cantidad_pasajeros.getText());					
+						oFactory.agregarAvionLista(id , nombre, color, longitud, cantDePasajeros);
 						
 						textField_nombre_vehiculo.setText(null);
 						textField_color_vehiculo.setText(null);
@@ -503,11 +519,10 @@ public class Forms_personal extends JPanel {
 					
 				}else if (rdbtnNewRadioButton_barco.isSelected() == true) {
 					try {
-						int id = listaDeVehiculos.size()+1;
+						int id = oFactory.getListaDeVehiculos().size()+1;
 						double eslora = (double)Integer.parseInt(textField_eslora.getText());
 						double manga = (double)Integer.parseInt(textField_manga.getText());
-						Barco oBarcoNuevo = new Barco (id, nombre, color, eslora, manga);
-						oFactory.agregarVehiculoLista(oBarcoNuevo);
+						oFactory.agregarBarcoLista(id, nombre, color, eslora, manga);
 						
 						textField_color_vehiculo.setText(null);
 						textField_nombre_vehiculo.setText(null);
@@ -554,6 +569,7 @@ public class Forms_personal extends JPanel {
 					TMPersona oModelo = new TMPersona(oFactory.getListaDePersonas());
 					table_persona.setModel(oModelo);
 					limpiar();
+					
 					lbl_persona_guardada.setText("Se ha guardado correctamente a "+nombre+", con el ID: "+id);
 				}catch(Exception error) {
 					JOptionPane.showMessageDialog(null, "Error, datos invalidos, vuelva a ingresarlos");
@@ -572,13 +588,27 @@ public class Forms_personal extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				limpiar();
-				oFactory.borrarLista();
-				TMVehiculos oModel = new TMVehiculos(listaDeVehiculos);
+				TMVehiculos oModel = new TMVehiculos(oFactory.getListaDeVehiculos());
 				table_VehiculosAgregados.setModel(oModel);
 			}
 		});
 		btn_LimpiarCampos.setBounds(0, 0, 85, 25);
 		panel_btns_helpers.add(btn_LimpiarCampos);
+		
+		JButton btn_ver_dashboard = new JButton("Ver Dashboard");
+		btn_ver_dashboard.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				try {
+					Dashboard oDashboard = new Dashboard(oFactory.getListaDePersonas().size(),oFactory.calcularPromedioDeVehiculosPorPersona());
+					oDashboard.setVisible(true);					
+				}catch(Exception error) {
+					JOptionPane.showMessageDialog(null, "Error, no hay personas ingresadas en el sistema para hacer el análisis");
+				}
+			}
+		});
+		btn_ver_dashboard.setBounds(124, 2, 132, 21);
+		panel_btns_helpers.add(btn_ver_dashboard);
 		
 		JPanel panel_buscador = new JPanel();
 		panel_buscador.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -591,9 +621,12 @@ public class Forms_personal extends JPanel {
 		panel_titulo_buscador.setBackground(new Color(255, 255, 255));
 		panel_titulo_buscador.setBounds(0, 0, 408, 32);
 		panel_buscador.add(panel_titulo_buscador);
+		panel_titulo_buscador.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Buscador por ID");
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setBounds(0, 0, 408, 32);
+		lblNewLabel.setFont(new Font("HP Simplified", Font.BOLD | Font.ITALIC, 14));
 		panel_titulo_buscador.add(lblNewLabel);
 		
 		JPanel panel_texto_buscador = new JPanel();
@@ -602,7 +635,7 @@ public class Forms_personal extends JPanel {
 		panel_texto_buscador.setLayout(null);
 		
 		textField_buscador = new JTextField();
-		textField_buscador.setBounds(53, 10, 303, 24);
+		textField_buscador.setBounds(27, 10, 323, 24);
 		panel_texto_buscador.add(textField_buscador);
 		textField_buscador.setColumns(10);
 		
@@ -615,21 +648,13 @@ public class Forms_personal extends JPanel {
 					int buscarPorID = Integer.parseInt(textField_buscador.getText());
 					oPersona = oFactory.buscarPersona(buscarPorID - 1);
 					
-					if( oPersona!=null ) {
-						
-						ArrayList<Persona> nuevaLista = new ArrayList<Persona>();
-						nuevaLista.add(oPersona);
-						TMPersona oModelo = new TMPersona(nuevaLista);
-						table_personas_buscador.setModel(oModelo);				
-						
-					}else {
+					ArrayList<Persona> nuevaLista = new ArrayList<Persona>();
+					nuevaLista.add(oPersona);
+					TMPersona oModelo = new TMPersona(nuevaLista);
+					table_personas_buscador.setModel(oModelo);				
 					
-						TMPersona oModelo = new TMPersona(listaDePersonas);
-						table_personas_buscador.setModel(oModelo);		
-						JOptionPane.showMessageDialog(null, "Error, no existe ese id");
-					}
 				}catch(Exception error) {
-					JOptionPane.showMessageDialog(null, "Error, debe ingresar un id válido");
+					JOptionPane.showMessageDialog(null, "Error, no existe ese ID");
 				}
 				
 			}
@@ -653,6 +678,12 @@ public class Forms_personal extends JPanel {
 }
 	
 	public void limpiar() {
+		ArrayList<Persona> nuevaLista = new ArrayList<Persona>();
+		TMPersona oModelo = new TMPersona(nuevaLista);
+		table_personas_buscador.setModel(oModelo);	
+		oFactory.borrarListaVehiculos();
+		TMVehiculos oModel = new TMVehiculos(oFactory.getListaDeVehiculos());
+		table_VehiculosAgregados.setModel(oModel);
 		textField_nombre.setText(null);
 		textField_apellido.setText(null);
 		comboBox_departamentos.setSelectedItem("Elige un departamento");
