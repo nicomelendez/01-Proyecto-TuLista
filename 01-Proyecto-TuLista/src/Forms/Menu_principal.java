@@ -25,20 +25,8 @@ public class Menu_principal {
 
 	private JFrame frmTulista;
 	private Imagen img = new Imagen();	
-	private ArrayList <Persona> listaDePersonas = new ArrayList <Persona>();
 	JPanel panel_forms = new JPanel();
 	
-	public ArrayList<Persona> getListaDePersonas() {
-		return listaDePersonas;
-	}
-
-	public void setListaDePersonas(ArrayList<Persona> listaDePersonas) {
-		this.listaDePersonas = listaDePersonas;
-	}
-	
-	public void agregarPersona(Persona oPersona) {
-		listaDePersonas.add(oPersona);
-	}
 	
 	/**
 	 * Launch the application.
@@ -166,12 +154,16 @@ public class Menu_principal {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
-				Forms_personal forms_personal = new Forms_personal();
-				forms_personal.setSize(1105, 522);
-				forms_personal.setLocation(0,0);
-				
+				//Instancia del form a mostrar
+				Forms_Personal forms_Personal = new Forms_Personal();
+				//Darle el tamaño del panel y centrarlo en x, y
+				forms_Personal.setSize(1105, 522);
+				forms_Personal.setLocation(0,0);
+				//Remover lo que haya dentro del panel 
 				panel_forms.removeAll();
-				panel_forms.add(forms_personal, BorderLayout.CENTER);
+				//Agregarlo al panel donde se va a mostrar y centrarlo
+				panel_forms.add(forms_Personal, BorderLayout.CENTER);
+				//Recargar el panel
 				panel_forms.revalidate();
 				panel_forms.repaint();
 			}

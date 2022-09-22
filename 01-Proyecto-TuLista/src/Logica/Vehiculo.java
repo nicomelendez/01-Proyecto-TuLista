@@ -2,6 +2,18 @@ package Logica;
 
 public class Vehiculo {
 	
+	private int idVehiculo;
+	private String nombre;
+	private String color;
+	
+
+	public Vehiculo(int idVehiculo, String nombre, String color) {
+		super();
+		this.idVehiculo = idVehiculo;
+		this.nombre = nombre;
+		this.color = color;
+	}
+	
 	public int getIdVehiculo() {
 		return idVehiculo;
 	}
@@ -25,21 +37,4 @@ public class Vehiculo {
 	public void setColor(String color) {
 		this.color = color;
 	}
-
-	private int idVehiculo;
-	private String nombre;
-	private String color;
-	
-	@Override
-	public String toString() {
-		return "Vehiculo [idVehiculo=" + idVehiculo + ", nombre=" + nombre + ", color=" + color + "]";
-	}
-
-	public Vehiculo(int idVehiculo, String nombre, String color) {
-		super();
-		this.idVehiculo = idVehiculo;
-		this.nombre = nombre;
-		this.color = color;
-	}
-	
 }

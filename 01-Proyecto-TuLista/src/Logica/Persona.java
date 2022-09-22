@@ -13,22 +13,6 @@ public class Persona {
 	private LocalDate fechaNacimiento;	
 	private ArrayList<Vehiculo> listaDeVehiculos = new ArrayList<Vehiculo>();
 	
-	
-	public Persona(int idPersona, String nombre, String apellido, String dptoResidencia, byte cantHijos,
-			LocalDate fechaNacimiento, ArrayList<Vehiculo> listaDeVehiculos) {
-		super();
-		this.idPersona = idPersona;
-		this.nombre = nombre;
-		this.apellido = apellido;
-		this.dptoResidencia = dptoResidencia;
-		this.cantHijos = cantHijos;
-		this.fechaNacimiento = fechaNacimiento;
-		this.listaDeVehiculos = listaDeVehiculos;
-	}
-
-	
-	
-	
 
 	public Persona() {
 		
@@ -48,10 +32,7 @@ public class Persona {
 		listaDeVehiculos.add(oVehiculo);
 	}
 	
-	public void agregarListaVehiculo(ArrayList<Vehiculo> listaDeVehiculos) {
-		this.listaDeVehiculos = listaDeVehiculos;
-	}
-		public int getIdPersona() {
+	public int getIdPersona() {
 		return idPersona;
 	}
 
@@ -106,15 +87,5 @@ public class Persona {
 	public void setListaDeVehiculos(ArrayList<Vehiculo> listaDeVehiculos) {
 		this.listaDeVehiculos = listaDeVehiculos;
 	}
-
-	@Override
-	public String toString() {
-		return "Persona [idPersona=" + idPersona + ", nombre=" + nombre + ", apellido=" + apellido + ", dptoResidencia="
-				+ dptoResidencia + ", cantHijos=" + cantHijos + ", fechaNacimiento=" + fechaNacimiento
-				+ ", listaDeVehiculos=" + listaDeVehiculos + "]";
-	}
-	
-	
-	
 	
 }
