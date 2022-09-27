@@ -42,7 +42,7 @@ public class Dashboard extends JFrame {
 		setResizable(false);
 		
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 643, 303);
+		setBounds(100, 100, 840, 229);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -50,32 +50,32 @@ public class Dashboard extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lbl_cantidad_persona = new JLabel("Personas ingresadas: "+cantidadPersona);
-		lbl_cantidad_persona.setFont(new Font("HP Simplified", Font.BOLD | Font.ITALIC, 17));
+		lbl_cantidad_persona.setFont(new Font("HP Simplified", Font.PLAIN, 19));
 		lbl_cantidad_persona.setBounds(38, 55, 570, 20);
 		contentPane.add(lbl_cantidad_persona);
 		
 		JLabel lbl_promedio_vehiculos = new JLabel("Promedio de vehículos por persona: "+promedioVehiculos);
-		lbl_promedio_vehiculos.setFont(new Font("HP Simplified", Font.BOLD | Font.ITALIC, 17));
-		lbl_promedio_vehiculos.setBounds(38, 78, 552, 20);
+		lbl_promedio_vehiculos.setFont(new Font("HP Simplified", Font.PLAIN, 19));
+		lbl_promedio_vehiculos.setBounds(38, 88, 552, 20);
 		contentPane.add(lbl_promedio_vehiculos);
 		
 		JLabel lbl_vehiculos_departamento = new JLabel("Vehículos por departamento: "+vehiculosPorDepartamento);
 		lbl_vehiculos_departamento.setVerticalAlignment(SwingConstants.TOP);
-		lbl_vehiculos_departamento.setFont(new Font("HP Simplified", Font.BOLD | Font.ITALIC, 17));
-		lbl_vehiculos_departamento.setBounds(38, 101, 552, 67);
+		lbl_vehiculos_departamento.setFont(new Font("HP Simplified", Font.PLAIN, 19));
+		lbl_vehiculos_departamento.setBounds(38, 118, 788, 67);
 		contentPane.add(lbl_vehiculos_departamento);
 		
 		JPanel panel = new JPanel();
 		panel.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panel.setBackground(new Color(255, 255, 255));
-		panel.setBounds(0, 0, 629, 38);
+		panel.setBounds(0, 0, 826, 38);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
 		JLabel lbl_titulo_dashboard = new JLabel("Estadísticas de TuLista");
 		lbl_titulo_dashboard.setFont(new Font("HP Simplified", Font.BOLD | Font.ITALIC, 22));
 		lbl_titulo_dashboard.setHorizontalAlignment(SwingConstants.CENTER);
-		lbl_titulo_dashboard.setBounds(0, 0, 619, 38);
+		lbl_titulo_dashboard.setBounds(0, 0, 833, 38);
 		panel.add(lbl_titulo_dashboard);
 	}
 }
